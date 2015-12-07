@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel ="stylesheet" href = "css/Correo.css">
+</head>
+
+<body id= "Sheet-1">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <img align = center src="EmailLogo.png" class="img-circle" alt="Email Logo" border="0" width="100" height="50">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="CorreoSalida.html"><span class="glyphicon glyphicon-folder-open"></span> Correos Salida</a></li>
+        <li><a href="CorreoEnviados.html"><span class="glyphicon glyphicon-folder-open"></span> Correos Enviados</a></li>
+        <li><a href="NuevoCorreo.html"><span class="glyphicon glyphicon-plus"></span> Nuevo Correo</a></li>
+        <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">                                                                
+  <div id="div-table" class="table-responsive">          
+  <table id="msEnviados" class="table table-bordered" table style="width: 80%; margin-left: auto; margin-right: auto;">
+      <thead>
+          <tr>
+            <th id="b2">Destinatario</th>
+            <th id="b2">Asunto</th>
+            <th id="b2">Mensaje</th>
+            <th id="b2">Fecha</th>
+            <th id="b2"></th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+  </table>
+  </div>
+</div>
+</body>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+    <script>
+    capturaCorreoEnviado();
+    </script>
+</html>

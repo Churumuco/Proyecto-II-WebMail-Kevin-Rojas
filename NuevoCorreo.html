@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel ="stylesheet" href = "css/Edicion.css">
+  <script src="ckeditor/ckeditor.js"></script>
+  <script src="ckeditor/samples/js/sample.js"></script>
+  <link rel="stylesheet" href="ckeditor/samples/css/samples.css">
+</head>
+<body id= "Sheet main" background="Fondo.jpg">
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <img align = center src="EmailLogo.png" class="img-circle" alt="Email Logo" border="0" width="100" height="50">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="LeerCorreo.html" id="envioCorreo"><span class="glyphicon glyphicon-log-in"></span> Enviar</a></li>
+        <li><a href="CorreoSalida.html" id="guardoCorreo"><span class="glyphicon glyphicon-log-in"></span> Guardar</a></li>
+        <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	<div class="container">
+    <center>
+      <img align = center src="EmailLogo.png" class="img-circle" alt="Email Logo">
+    </center>
+  <form role="form">
+        <div class="form-group">
+      <label for="email">Para</label>
+      <input type="email" class="form-control" id="correoDestino" placeholder= "Ingrese su Correo Electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Utilice el formato correcto mail@example.com" required>
+    </div>
+    <div class="form-group">
+      <label for="usr">Asunto</label>
+      <input type="text" class="form-control" id="asunto" max leght = "20" placeholder= "Ingrese su Nombre" pattern=".{2,}"title="Debe tener 4 o más Caracteres." required/>
+    </div>
+      </form>
+	</div>
+      <main>
+    <div id="main-editor">
+      <div class="grid-container">
+        <div class="grid-width-100">
+          <div id="editor">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    initSample();
+    </script>
+    </main>
+</body>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/jquery11.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+</html>
