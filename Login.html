@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel ="stylesheet" href = "css/designLogin.css">
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 </head>
@@ -13,20 +14,20 @@
     <center>
       <img align = center src="EmailLogo.png" class="img-circle" alt="Email Logo">
     </center>
-  <form>
+  <form name="Testing">
     <div class="form-group">
       <label for="email">Correo Electrónico</label>
-      <input type="email" class="form-control" id="email" placeholder= "Ingrese su Correo Electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Utilice el formato correcto mail@example.com" required>
+      <input type="email" class="form-control" id="email" name= "emaila" placeholder= "Ingrese su Correo Electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Utilice el formato correcto mail@example.com" required>
     </div>
     <div class="form-group">
       <label for="pwd">Password</label>
-      <input type="password" class="form-control" id="password" max leght = "20" placeholder= "Ingrese su Password" pattern=".{3,}"title="Debe tener 3 o más Caracteres." required/>
+      <input type="password" alt="strongPass" class="form-control" id="password" max leght = "20" placeholder= "Ingrese su Password" pattern=".{3,}"title="Debe tener 3 o más Caracteres." required/>
     </div>
       </div>
   </form>
 	</div>
           <center>
-          <button class="btn btn-danger" id="iniciar"><span class="glyphicon glyphicon-user"></span> Iniciar Sesión</button>
+          <button class="btn btn-danger" onClick="verifyEmail();" id="iniciar"><span class="glyphicon glyphicon-user"></span> Iniciar Sesión</button>
           <button class="btn btn-danger" onClick="parent.location='Registro.html'">
           <span class="glyphicon glyphicon-user"></span> Registro</button>
         </center>

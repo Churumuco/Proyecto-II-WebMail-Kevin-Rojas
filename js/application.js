@@ -1,6 +1,6 @@
 //GUARDA LOS DATOS DEL USUARIO.
 $('#GuardarUsuario').click(function() {
-  console.log('Registrar usuario');
+  console.log('Usuario Registro');
   var usuario = document.getElementById("email").value;
   var contrasena = document.getElementById("password").value;
 
@@ -213,5 +213,12 @@ function setEditarDatos() {
 
 }
 
+//ME PERMITE VERIFICAR SI EL CORREO ESTA CORRECTO
+function verifyEmail(){
+var status = false;     
+var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-
+  if (document.Testing.emaila.value.search(emailRegEx) == -1) {
+        alert("CORREO CON FORMATO INCORRECTO");
+      }
+    }
