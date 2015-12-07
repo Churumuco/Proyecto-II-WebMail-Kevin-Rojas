@@ -35,8 +35,8 @@ $('#guardoCorreo').click(function() {
   var destino = document.getElementById("correoDestino").value;
   var asunto = document.getElementById("asunto").value;
   var contenido = CKEDITOR.instances.editor.getData();
-  var salida = getSalida();
-  var id = salida.length + 1;
+  var CorreoSal = getSalida();
+  var id = CorreoSal.length + 1;
   var correo = {
     "id": id,
     "destino": destino,
@@ -45,8 +45,8 @@ $('#guardoCorreo').click(function() {
     "fecha": new Date()
   };
   if (destino != "" && asunto != "" && contenido != "") {
-    salida.push(correo);
-    setSalida(salida);
+    CorreoSal.push(correo);
+    setSalida(CorreoSal);
     }else{
     //EN CASO DE QUE LOS CAMPOS ESTEN VACIOS SE RECIBE UNA ALERTA
     alert('¡FAVOR COMPLETAR LOS CAMPOS!');
@@ -58,8 +58,8 @@ $('#envioCorreo').click(function() {
   var destino = document.getElementById("correoDestino").value;
   var asunto = document.getElementById("asunto").value;
   var contenido = CKEDITOR.instances.editor.getData();
-  var enviados = getEnviados();
-  var id = enviados.length + 1;
+  var CorreoEnv = getEnviados();
+  var id = CorreoEnv.length + 1;
   var correo = {
     "id": id,
     "destino": destino,
@@ -68,8 +68,8 @@ $('#envioCorreo').click(function() {
     "fecha": new Date()
   };
   if (destino != "" && asunto != "" && contenido != "") {
-    enviados.push(correo);
-    setEnviados(enviados);
+    CorreoEnv.push(correo);
+    setEnviados(CorreoEnv);
     }else{
     //EN CASO DE QUE LOS CAMPOS ESTEN VACIOS SE RECIBE UNA ALERTA
     alert('¡FAVOR COMPLETAR LOS CAMPOS!');
@@ -77,31 +77,31 @@ $('#envioCorreo').click(function() {
   });
 
 function getEnviados() {
-  var enviados = JSON.parse(localStorage.getItem('enviados'));
-  return enviados ? enviados : [];
+  var CorreoEnv = JSON.parse(localStorage.getItem('CorreoEnv'));
+  return CorreoEnv ? CorreoEnv : [];
 }
 
 function setEnviados(datos) {
-  localStorage.setItem('enviados', JSON.stringify(
+  localStorage.setItem('CorreoEnv', JSON.stringify(
     datos));
 }
 
 function getSalida() {
-  var salida = JSON.parse(localStorage.getItem('salida'));
-  return salida ? salida : [];
+  var CorreoSal = JSON.parse(localStorage.getItem('CorreoSal'));
+  return CorreoSal ? CorreoSal : [];
 }
 
 function setSalida(datos) {
-  localStorage.setItem('salida', JSON.stringify(
+  localStorage.setItem('CorreoSal', JSON.stringify(
     datos));
 }
 
 //CAPTURA EL CORREO AGREGADO Y LO CREA EN LA TABLA DEL LOS CORREOS "ENVIADOS"
 function capturaCorreoEnviado() {
-  var enviados = getEnviados();
+  var CorreoEnv = getEnviados();
   var tableBody = $('#msEnviados').find('tbody');
   var body = '';
-  enviados.forEach(function(enviado, index, array) {
+  CorreoEnv.forEach(function(enviado, index, array) {
     body +=
       '<tr>' +
       '<td id="ms1">' + enviado.destino + '</td>' +
@@ -119,19 +119,19 @@ function capturaCorreoEnviado() {
 
 //CAPTURA EL CORREO AGREGADO Y LO CREA EN LA TABLA DE LOS CORREOS DE "SALIDA"
 function capturaCorreoSalida() {
-  var salida = getSalida();
+  var CorreoSal = getSalida();
   var tableBody = $('#msSalida').find('tbody');
   var body = '';
-  salida.forEach(function(salida, index, array) {
+  CorreoSal.forEach(function(CorreoSal, index, array) {
     body +=
       '<tr>' +
-      '<td id="ms1">' + salida.destino + '</td>' +
-      '<td id="ms1">' + salida.asunto + '</td>' +
-      '<td id="ms1">' + salida.contenido + '</td>' +
-      '<td id="ms1">' + salida.fecha + '</td>' +
-      '<td id="ms1"><button id="editarSalida" data-id="' + salida.id +
+      '<td id="ms1">' + CorreoSal.destino + '</td>' +
+      '<td id="ms1">' + CorreoSal.asunto + '</td>' +
+      '<td id="ms1">' + CorreoSal.contenido + '</td>' +
+      '<td id="ms1">' + CorreoSal.fecha + '</td>' +
+      '<td id="ms1"><button id="editarSalida" data-id="' + CorreoSal.id +
       '" class="btn btn-danger">Editar </br></button>   <button id="eliminarSalida" data-id="' +
-      salida.id + '" class="btn btn-danger">Eliminar</button></td></tr>';
+      CorreoSal.id + '" class="btn btn-danger">Eliminar</button></td></tr>';
   });
 
   tableBody.empty();
@@ -147,9 +147,9 @@ $(document).delegate("#editarSalida", "click", function() {
 //ELIMINA EL CORREO SELECCIONADO DE LA BANDEJA DE SALIDA.
 $(document).delegate('#eliminarSalida', "click", function() {
   var id = $(this).data('id');
-  var salida = getSalida();
+  var CorreoSal = getSalida();
   var datos = [];
-  salida.forEach(function(element, index) {
+  CorreoSal.forEach(function(element, index) {
     if (element.id != id) {
       datos.push(element);
     }
@@ -161,9 +161,9 @@ $(document).delegate('#eliminarSalida', "click", function() {
 //ELIMINA EL CORREO SELECCIONADO DE LA BANDEJA DE ENVIADOS.
 $(document).delegate('#eliminarEnviados', "click", function() {
   var id = $(this).data('id');
-  var enviados = getEnviados();
+  var CorreoEnv = getEnviados();
   var datos = [];
-  enviados.forEach(function(element, index) {
+  CorreoEnv.forEach(function(element, index) {
     if (element.id != id) {
       datos.push(element);
     }
@@ -176,33 +176,33 @@ $(document).delegate('#eliminarEnviados', "click", function() {
 $('#MoverCorreo').click(function() {
   
   var id = window.location.search.split('=')[1];
-  var salida = getSalida();
-  var enviados = getEnviados();
+  var CorreoSal = getSalida();
+  var CorreoEnv = getEnviados();
   var newSalida = [];
 
-  salida.forEach(function(element,index){
+  CorreoSal.forEach(function(element,index){
 
     if(element.id != id){
       newSalida.push(element);
     }else{
-      enviados.push(element);
+      CorreoEnv.push(element);
     }
   });
 
   setSalida(newSalida);
-  setEnviados(enviados);
+  setEnviados(CorreoEnv);
 });
 
 //OBTIENE LO QUE TENGA EL "PARA", EL ASUNTO Y LO QUE SE DIGITA EN EL EDITOR.
 function setEditarDatos() {
-  var salida = getSalida();
+  var CorreoSal = getSalida();
   var id = window.location.search.split('=')[1];
   var destino = document.getElementById('destino');
   var asunto = document.getElementById('asunto');
   var editor = CKEDITOR.instances.editor;
   var datos;
 
-  salida.forEach(function(element, index) {
+  CorreoSal.forEach(function(element, index) {
     if (element.id == id) {
       return datos = element;
     }
